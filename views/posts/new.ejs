@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a New Journal Entry</title>
+  </head>
+
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    
+    <h1>Add a New Journal Entry</h1>
+
+    <form action="/users/<%= user._id %>/posts" method="POST">
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title" required/>
+
+      <label for="content">Content:</label>
+      <textarea name="content" id="content" required></textarea>
+
+      <label for="imageUrl">Image URL:</label>
+      <input type="text" name="imageUrl" id="imageUrl" required/>
+
+      <label for="viewType">Visibility:</label>
+      <select id="viewType" name="viewType">
+        <option value="private">Private</option>
+        <option value="shared">Shared</option>
+      </select>
+
+      <button type="submit">Add Journal Entry</button>
+    </form>
+
+  </body>
+</html>

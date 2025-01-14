@@ -9,6 +9,8 @@ require('./config/database');
 
 // Controllers
 const authController = require('./controllers/auth');
+const postsController = require('./controllers/posts.js');
+
 const isSignedIn = require('./middleware/isSignedIn');
 
 const app = express();
@@ -37,8 +39,15 @@ app.use(
 app.use(addUserToViews);
 
 // Public Routes
-app.get('/', async (req, res) => {
-  res.render('index.ejs');
+app.get('/', (req, res) => {
+  // Check if the user is signed in
+  if (req.session.user) {
+    // Redirect signed-in users to their applications index
+    res.redirect(`/users/${req.session.user._id}/posts`);
+  } else {
+    // Show the homepage for users who are not signed in
+    res.render('index.ejs');
+  }
 });
 
 app.use('/auth', authController);
@@ -54,6 +63,8 @@ app.get('/protected', async (req, res) => {
     // res.send('Sorry, no guests allowed.');
   }
 });
+
+app.use('/users/:userId/posts', postsController);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
