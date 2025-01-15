@@ -23,7 +23,6 @@
         background-color: var(--light-beige);
         color: var(--dark-brown);
         line-height: 1.6;
-        background-image: url('./images/aged-paper-texture.jpg'); /* Use an aged paper texture */
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -122,7 +121,6 @@
   <body>
     <% if (user) { %>
       <div class="container">
-        <img src="./logo.jpg" alt="Mudhakkarat Logo" class="logo">
         <h1>Mudhakkarat, <%= user.username %>!</h1>
         <p>Where memories and stories are cherished like poetry.</p>
         <div>
@@ -135,7 +133,6 @@
       </div>
     <% } else { %>
       <div class="container">
-        <img src="./images/logo.jpg" alt="Mudhakkarat Logo" class="logo">
         <!-- <h1>مذكّرات</h1> -->
         <h1>Mudhakkarat</h1>
 
