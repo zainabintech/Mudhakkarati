@@ -48,3 +48,33 @@ Mudakkarat is a simple, private, and secure journaling app where you can documen
 - **CSS (with Flexbox)** for responsive design
 - **Google Fonts** for typography
 
+## Attributions 
+
+ChatGPT: Used in several ways, such as assisting in organizing and preparing the journal app.
+
+## Planning Tools
+Google Docs: https://docs.google.com/document/d/1ePugdlxV6EM8o2Ydk2pMLtV_1zTi7-cLlHS5JobHiBk/edit?usp=sharing
+ChatGPT: Helping me while creating the pseudocode.
+
+
+## Future Features: Next Steps for Mudakkarat
+- **Shared View** 
+
+Users can post entries to a shared view visible to others.
+Users can follow people by sharing a unique key or code.
+Allows interaction with other users' posts while maintaining control over who can view them.
+Private View:
+
+- **Private View:** 
+A secure, personal space for users to keep their entries private.
+Only the user who created the entry can view it.
+
+
+- **Shared Key for Following::** 
+Users exchange a unique key to follow others and access shared entries.
+Provides a more controlled and trusted way to connect with others.
+
+
+- **Post to Shared or Private View::** 
+Users can choose whether an entry is for their private view or for sharing in the shared view.
+Entries for the shared view are accessible only to users with the shared key.
