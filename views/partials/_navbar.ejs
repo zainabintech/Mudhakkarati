@@ -1,9 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation Bar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Color Palette */
+      --outer-space: #2e3c3b;
+      --sage: #90a280;
+      --green-white: #e0e3d8;
+      --hemlock: #585539;
+      --finlandia: #595e58;
+      --sprout: #b6cc9c;
+      --submarine: #b9c3c6;
+      --limed-ash: #717858;
+      --nevada: #6f7071;
+      --mineral-green: #3c544c;
+    }
+
+    /* General Body Styling */
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--green-white);
+      background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    /* Compact Navigation Bar Styling */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: 0; /* Align navbar to the right */
+      width: 17.5%; /* Set the navbar width */
+      padding: 10px 20px;
+      background-color: var(--outer-space);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      font-size: 0.9rem; /* Smaller text size */
+    }
+
+    /* Logo Styling */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--green-white);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Nav Links Container */
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px; /* Smaller gap between links */
+    }
+
+    /* Styling for each nav link */
+    nav a {
+      color: var(--green-white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Hover Effect for links */
+    nav a:hover {
+      background-color: var(--sage);
+      transform: scale(1.05);
+    }
+
+    /* Mobile-Responsive Styling */
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+        width: 90%; /* Increase width for mobile */
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+      }
+    }
+
+    /* Content Section */
+    .content {
+      margin-top: 60px; /* Adjust for smaller navbar height */
+    }
+  </style>
+</head>
+<body>
+
 <nav>
+  <!-- Logo or Branding -->
+  
+  <!-- Navigation Links -->
+  <div class="nav-links">
     <% if(user) { %>
-    <a href="/users/<%= user._id %>/posts">Home</a>
-    <a href="/auth/sign-out">Sign Out</a>
+      <a href="/users/<%= user._id %>/posts">Your Posts</a>
+      <a href="/auth/sign-out">Sign Out</a>
     <% } else { %>
-    <a href="/auth/sign-in">Sign In</a>
-    <a href="/auth/sign-up">Sign Up</a>
+      <a href="/auth/sign-in">Sign In</a>
+      <a href="/auth/sign-up">Sign Up</a>
     <% } %>
-  </nav>
+  </div>
+</nav>
+
+
+
+</body>
+</html>

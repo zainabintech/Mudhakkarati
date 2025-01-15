@@ -38,15 +38,29 @@ router.post('/', async (req, res) => {
     }
   });
 
-  //Show - where you view a post entry 
-  router.get('/:journalId', async (req, res) => {
+  // Show - where you view a post entry 
+router.get('/:postId', async (req, res) => {
     try {
       const currentUser = await User.findById(req.session.user._id);
-      const posts = currentUser.posts.id(req.params.journalId);
+      const post = currentUser.posts.id(req.params.postId); // changed `posts` to `post`
   
       res.render('posts/show.ejs', {
-        posts,
+        post, // changed `posts` to `post`
       });
+    } catch (error) {
+      console.log(error);
+      res.redirect('/');
+    }
+});
+
+
+// Delete - Remove a journal entry
+router.delete('/:postId', async (req, res) => {
+    try {
+      const currentUser = await User.findById(req.session.user._id);
+      currentUser.posts.id(req.params.postId).deleteOne();
+      await currentUser.save();
+      res.redirect(`/users/${currentUser._id}/posts`);
     } catch (error) {
       console.log(error);
       res.redirect('/');
@@ -54,6 +68,32 @@ router.post('/', async (req, res) => {
   });
 
 
+ // Edit - Form to edit a journal entry
+router.get('/:postId/edit', async (req, res) => {
+    try {
+      const currentUser = await User.findById(req.session.user._id);
+      const post = currentUser.posts.id(req.params.postId); // changed `posts` to `post`
+  
+      res.render('posts/edit.ejs', {
+        post, // changed `posts` to `post`
+      });
+    } catch (error) {
+      console.log(error);
+      res.redirect('/');
+    }
+});
 
-
+  // Update - Save changes to a journal entry
+router.put('/:postId', async (req, res) => {
+    try {
+      const currentUser = await User.findById(req.session.user._id);
+      const posts = currentUser.posts.id(req.params.postId);
+      posts.set(req.body);
+      await currentUser.save();
+      res.redirect(`/users/${currentUser._id}/posts/${req.params.postId}`);
+    } catch (error) {
+      console.log(error);
+      res.redirect('/');
+    }
+  });
 module.exports = router;

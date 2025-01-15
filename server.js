@@ -9,6 +9,7 @@ require('./config/database');
 
 // Controllers
 const authController = require('./controllers/auth');
+// const postsController = require('./controllers/applications.js');
 const postsController = require('./controllers/posts.js');
 
 const isSignedIn = require('./middleware/isSignedIn');

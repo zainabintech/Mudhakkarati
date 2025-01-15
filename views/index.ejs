@@ -1,27 +1,154 @@
-<!-- views/index.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>Home Page - Mudhakkarat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --dark-brown: #4b3f32;
+        --light-beige: #f1e6c6;
+        --gold: #e0b97f;
+        --warm-gray: #8d7d6c;
+        --deep-red: #b35f56;
+        --off-white: #f6f4ed;
+        --light-gray: #d4cfc4;
+      }
+
+      body {
+        font-family: 'Merriweather', serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--light-beige);
+        color: var(--dark-brown);
+        line-height: 1.6;
+        background-image: url('./images/aged-paper-texture.jpg'); /* Use an aged paper texture */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        overflow: hidden; /* Prevent scrolling */
+      }
+
+      header {
+        background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+        color: var(--light-beige);
+        text-align: center;
+        padding: 40px;
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+        border-bottom: 3px solid var(--gold);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .container {
+        max-width: 900px;
+        width: 100%;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.8); /* Soft white background with opacity */
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      h1 {
+        font-family: 'Playfair Display', serif;
+        color: var(--deep-red);
+        font-size: 3rem;
+        letter-spacing: 0.1em;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        font-family: 'Merriweather', serif;
+        margin-bottom: 25px;
+        color: var(--warm-gray);
+      }
+
+      .btn {
+        padding: 15px 30px;
+        background-color: var(--deep-red);
+        color: var(--off-white);
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: 2px solid var(--gold);
+        text-transform: uppercase;
+        display: inline-block;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin: 10px;
+      }
+
+      .btn:hover {
+        background-color: var(--gold);
+        transform: scale(1.05);
+      }
+
+      .logo {
+        display: block;
+        margin: 0 auto 30px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--gold);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .auth-links {
+        margin-top: 30px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: var(--dark-brown);
+        color: var(--light-beige);
+        font-family: 'Playfair Display', serif;
+        border-top: 3px solid var(--gold);
+      }
+    </style>
   </head>
   <body>
     <% if (user) { %>
-      <h1>Mudhakkarat <%= user.username %>!</h1>
-      <p>
-        <a href="/posts"> My Profile</a>
-      </p>
-      
-      <a href="/auth/sign-out">Sign out</a>
-      <% } else { %>
-      <h1>Mudhakkarat</h1>
-
-      <p>
-        <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
-      </p>
-      <% } %>
-
+      <div class="container">
+        <img src="./images/logo.jpg" alt="Mudhakkarat Logo" class="logo">
+        <h1>Welcome to Mudhakkarat, <%= user.username %>!</h1>
+        <p>Where memories and stories are cherished like poetry.</p>
+        <div>
+          <a href="/posts/new" class="btn">Add a New Post</a>
+        </div>
+        <p class="auth-links">
+          <a href="/posts" class="btn">My Profile</a> | 
+          <a href="/auth/sign-out" class="btn">Sign out</a>
+        </p>
+      </div>
+    <% } else { %>
+      <div class="container">
+        <img src="./images/logo.jpg" alt="Mudhakkarat Logo" class="logo">
+        <h1>Welcome to Mudhakkarat!</h1>
+        <p>Join our community and document your journey.</p>
+        <div class="auth-links">
+          <a href="/auth/sign-up" class="btn">Sign up</a> or 
+          <a href="/auth/sign-in" class="btn">sign in</a>.
+        </div>
+      </div>
+    <% } %>
+    <footer>
+      <br>
+      <br>
+      <br>
+      <br>
+    </footer>
   </body>
 </html>

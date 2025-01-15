@@ -1,20 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0e6d2; /* Light Antique Ivory */
+    }
+
+    h1 {
+      color: #9c5c3d; /* Deep rich amber */
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #5c3d29; /* Dark walnut brown */
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #8a6e4d; /* Muted clay */
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #d8b35c; /* Soft vintage gold */
+      color: #f0e6d2; /* Antique Ivory */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #f4a300; /* Soft saffron yellow */
+    }
+
+    .auth-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .auth-link a {
+      color: #9c5c3d;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .auth-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      form {
+        width: 90%;
+        padding: 20px;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div>
     <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
+    <form action="/auth/sign-up" method="POST" onsubmit="return validatePassword()">
       <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
+      <input type="text" name="username" id="username" required />
+
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
+      <input type="password" name="password" id="password" required />
+
       <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
+      <input type="password" name="confirmPassword" id="confirmPassword" required />
+
       <button type="submit">Sign up</button>
     </form>
-  </body>
+    <div class="auth-link">
+      <p>Already have an account? <a href="/auth/sign-in">Sign in</a></p>
+    </div>
+  </div>
+
+  <script>
+    function validatePassword() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      
+      if (password !== confirmPassword) {
+        alert("Passwords do not match. Please try again.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
 </html>

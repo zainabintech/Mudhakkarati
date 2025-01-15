@@ -1,34 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add a New Journal Entry</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add a New Journal Entry</title>
+  <style>
+    :root {
+      --old-ivory: #F0E6D2; /* Antique Ivory */
+      --burnt-amber: #9C5C3D; /* Deep rich amber */
+      --sage: #A6B79A; /* Soft olive green */
+      --deep-brown: #5C3D29; /* Dark walnut brown */
+      --golden-sand: #D8B35C; /* Soft vintage gold */
+      --saffron: #F4A300; /* Soft saffron yellow */
+      --dark-clay: #8A6E4D; /* Muted clay */
+      --faded-pink: #F1D1C1; /* Faded, warm pink */
+    }
 
-  <body>
-    <%- include('../partials/_navbar.ejs') %>
-    
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--old-ivory);
+      color: var(--deep-brown);
+      line-height: 1.6;
+      background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      box-sizing: border-box; /* Prevent overflow */
+      overflow: hidden; /* Prevent scrolling */
+    }
+
+    h1 {
+      color: var(--burnt-amber);
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; /* Further reduced font size */
+      margin-bottom: 15px; /* Reduced margin */
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 350px; /* Further reduced width */
+      padding: 15px; /* Reduced padding */
+      background-color: var(--old-ivory);
+      border-radius: 8px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--dark-clay);
+      margin: 0 40px; /* Increased margin on the sides */
+      overflow: hidden; /* Ensure no scrollbars appear */
+      box-sizing: border-box;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px; /* Smaller margin */
+      font-weight: bold;
+      color: var(--deep-brown);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 8px; /* Smaller padding */
+      margin-bottom: 10px; /* Reduced margin */
+      border: 1px solid var(--dark-clay);
+      border-radius: 6px;
+      background-color: var(--faded-pink);
+      color: var(--deep-brown);
+      font-size: 0.9rem; /* Smaller font size */
+      box-sizing: border-box; /* Ensures the padding doesn't add to width */
+    }
+
+    textarea {
+      height: 100px; /* Reduced height */
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px; /* Smaller padding */
+      background-color: var(--golden-sand);
+      color: var(--old-ivory);
+      font-size: 1rem; /* Smaller font size */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--saffron);
+    }
+
+  </style>
+</head>
+
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+
+  <div class="form-container">
     <h1>Add a New Journal Entry</h1>
 
     <form action="/users/<%= user._id %>/posts" method="POST">
       <label for="title">Title:</label>
-      <input type="text" name="title" id="title" required/>
+      <input type="text" name="title" id="title" placeholder="Enter the title of your journal entry" required />
 
       <label for="content">Content:</label>
-      <textarea name="content" id="content" required></textarea>
+      <textarea name="content" id="content" placeholder="Write your thoughts here..." required></textarea>
 
-      <label for="imageUrl">Image URL:</label>
-      <input type="text" name="imageUrl" id="imageUrl" required/>
+      <label for="imageUrl">Image URL (Optional):</label>
+      <input type="text" name="imageUrl" id="imageUrl" placeholder="Enter an image URL (optional)" />
 
-      <label for="viewType">Visibility:</label>
-      <select id="viewType" name="viewType">
-        <option value="private">Private</option>
-        <option value="shared">Shared</option>
+      <label for="mood">Mood (Optional):</label>
+      <select id="mood" name="mood">
+        <option value="">Select a mood</option>
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="neutral">Neutral</option>
+        <option value="excited">Excited</option>
+        <option value="anxious">Anxious</option>
       </select>
+
+      <label for="tags">Tags (Optional, separated by commas):</label>
+      <input type="text" name="tags" id="tags" placeholder="e.g. travel, personal, work" />
 
       <button type="submit">Add Journal Entry</button>
     </form>
+  </div>
 
-  </body>
+</body>
 </html>

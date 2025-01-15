@@ -1,18 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In</title>
-  </head>
-  <body>
-    <h1>Sign in</h1>
-    <form action="/auth/sign-in" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <button type="submit">Sign in</button>
-    </form>
-  </body>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --old-ivory: #F0E6D2; /* Antique Ivory */
+            --burnt-amber: #9C5C3D; /* Deep rich amber */
+            --sage: #A6B79A; /* Soft olive green */
+            --deep-brown: #5C3D29; /* Dark walnut brown */
+            --golden-sand: #D8B35C; /* Soft vintage gold */
+            --saffron: #F4A300; /* Soft saffron yellow */
+            --dark-clay: #8A6E4D; /* Muted clay */
+            --faded-pink: #F1D1C1; /* Faded, warm pink */
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--old-ivory);
+            color: var(--deep-brown);
+            line-height: 1.6;
+            background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+            background-size: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background-color: var(--old-ivory);
+            border-radius: 10px;
+            border: 1px solid var(--dark-clay);
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--burnt-amber);
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--deep-brown);
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            border: 1px solid var(--dark-clay);
+            border-radius: 6px;
+            background-color: var(--faded-pink);
+            color: var(--deep-brown);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--golden-sand);
+            color: var(--old-ivory);
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--saffron);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--sage);
+            color: var(--old-ivory);
+            margin-top: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            border-top: 1px solid var(--dark-clay);
+            letter-spacing: 0.5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sign In</h1>
+        
+        <form action="/auth/sign-in" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required />
+            
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+            
+            <button type="submit">Sign in</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2025 Mudhakkarat | All Rights Reserved</p>
+    </footer>
+
+</body>
 </html>
