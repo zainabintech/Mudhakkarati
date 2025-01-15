@@ -123,7 +123,7 @@
     <% if (user) { %>
       <div class="container">
         <img src="./images/logo.jpg" alt="Mudhakkarat Logo" class="logo">
-        <h1>Welcome to Mudhakkarat, <%= user.username %>!</h1>
+        <h1>Mudhakkarat, <%= user.username %>!</h1>
         <p>Where memories and stories are cherished like poetry.</p>
         <div>
           <a href="/posts/new" class="btn">Add a New Post</a>
@@ -136,8 +136,10 @@
     <% } else { %>
       <div class="container">
         <img src="./images/logo.jpg" alt="Mudhakkarat Logo" class="logo">
-        <h1>Welcome to Mudhakkarat!</h1>
-        <p>Join our community and document your journey.</p>
+        <!-- <h1>مذكّرات</h1> -->
+        <h1>Mudhakkarat</h1>
+
+        <p>A Journal of You</p>
         <div class="auth-links">
           <a href="/auth/sign-up" class="btn">Sign up</a> or 
           <a href="/auth/sign-in" class="btn">sign in</a>.
